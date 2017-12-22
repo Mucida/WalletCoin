@@ -67,6 +67,9 @@ class CompraViewController: UIViewController {
             txtValorBitcoin.text = bitf
         }
         investimentoGuardado = qtdGuardada*unitarioGuardado*bitGuardado
+        if let dataEditada = compraEditada.value(forKey: "data") as? Date{
+            dataCompra.date = dataEditada
+        }
     }
 
     override func didReceiveMemoryWarning() {
