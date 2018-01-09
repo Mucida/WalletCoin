@@ -5,8 +5,10 @@
         <attribute name="investimento" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="logo" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="nome" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="porcentagem" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="qtd" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="sigla" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="totalLucro" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="urlSymbol" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="valor" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="compra" toMany="YES" deletionRule="Nullify" destinationEntity="Compra" inverseName="relCoin" inverseEntity="Compra" syncable="YES"/>
@@ -19,7 +21,7 @@
         <relationship name="relCoin" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Coin" inverseName="compra" inverseEntity="Coin" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Coin" positionX="81" positionY="131" width="128" height="180"/>
+        <element name="Coin" positionX="81" positionY="131" width="128" height="210"/>
         <element name="Compra" positionX="259" positionY="159" width="128" height="118"/>
     </elements>
 </model>

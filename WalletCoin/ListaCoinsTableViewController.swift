@@ -36,7 +36,8 @@ class ListaCoinTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        repeating = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(atualiza), userInfo: nil, repeats: true)
+        atualizaCoins()
+        repeating = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(atualizaCoins), userInfo: nil, repeats: true)
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         self.context = appDelegate.persistentContainer.viewContext
         //self.deleteAllData(entity: "Coin")
@@ -44,7 +45,7 @@ class ListaCoinTableViewController: UITableViewController {
         //soh cria as coins uma vez
         if def.bool(forKey: "firstRun") { cc.criaCoins(context: context) }
         //cc.criaCoins(context: context)
-        cc.addCoin(context: context)
+        //cc.addCoin(context: context)
         
         
         // Do any additional setup after loading the view, typically from a nib.
@@ -87,6 +88,59 @@ class ListaCoinTableViewController: UITableViewController {
         return self.coins.count
     }
     
+    @objc func atualizaCoins(){
+        for coin in coins{
+            let nome = coin.value(forKey: "nome") as? String
+            
+            _ = self.binanceService.binanceTradeBitcoin(buffer: buffer)
+            if nome == "Bitcoin"{
+                self.bitcoinTradeService.bitcoinTrade(nomeMoeda: nome!, qtd: self.quantidade, investimento: self.investimento, buffer: buffer)
+            }else if nome == "Tron"{
+                if let urlMoeda = coin.value(forKey: "urlSymbol"){
+                    self.binanceService.binanceTrade(nomeMoeda: nome!, moeda: String(describing: urlMoeda), cqtd: self.quantidade, investimento: self.investimento, buffer: buffer)
+                }
+            }else{
+                if let urlMoeda = coin.value(forKey: "urlSymbol"){
+                    self.bitfinexService.bitfinexTrade(nomeMoeda: nome!, moeda: String(describing: urlMoeda), cqtd: self.quantidade, investimento: self.investimento, buffer: buffer)
+                }
+            }
+            
+            quantidade = coin.value(forKey: "qtd") as! Double
+            investimento = coin.value(forKey: "investimento") as! Double
+            viewInvestimentoTotal += investimento
+            
+            let preco = buffer.meuBuffer[nome!]
+            let totalLucro = (quantidade * preco!)
+            viewLucroTotal += totalLucro
+            coin.setValue(totalLucro, forKey: "totalLucro")
+            
+            var porcentagem = 0.0
+            if investimento != 0{
+                porcentagem = ((totalLucro/investimento) - 1)*100
+            }
+            coin.setValue(porcentagem, forKey: "porcentagem")
+            
+            do{
+                try context.save()
+            } catch {
+                print("Erroa o salvar as coins")
+            }
+            
+        }
+        
+            lblViewInvestimentoTotal.text = "$" + formataNumero.formataPreco(preco: viewInvestimentoTotal as! NSNumber)
+            lblViewLucroTotal.text = "$" +  formataNumero.formataPreco(preco: viewLucroTotal as NSNumber)
+            let porcentagemTotal : Double = ((viewLucroTotal/viewInvestimentoTotal) - 1)*100
+            lblViewPorcentagem.text = formataNumero.formataPorcentagem(val: porcentagemTotal as NSNumber)
+            if porcentagemTotal >= 0{
+                lblViewPorcentagem.textColor = UIColor(red: 0, green: 0.6, blue:0, alpha: 1.0)
+            } else{
+                lblViewPorcentagem.textColor = UIColor.red
+            }
+        
+        tableView.reloadData()
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if(indexPath.row <= 1){
             viewLucroTotal = 0
@@ -97,61 +151,36 @@ class ListaCoinTableViewController: UITableViewController {
         
         let nome = coin.value(forKey: "nome") as? String
         celula.lblNomeMoeda.text = nome
+        
         celula.lblSigla.text = coin.value(forKey: "sigla") as? String
+        
         let imagem: Data = coin.value(forKey: "logo") as! Data
         celula.imgLogo.image = UIImage(data: imagem)
-        quantidade = coin.value(forKey: "qtd") as! Double        
-        investimento = coin.value(forKey: "investimento") as! Double
-        viewInvestimentoTotal += investimento
-        celula.lblInvestimentoMedio.text = formataNumero.formataPreco(preco: investimento as! NSNumber)
         
-        let precoBitcoin = self.binanceService.binanceTradeBitcoin(buffer: buffer)
+        let qtd = coin.value(forKey: "qtd") as! Double
         if nome == "Bitcoin"{
-            celula.lblQtdDeMoedas.text = formataNumero.formataQuantidadeBitcoin(qtd: quantidade as! NSNumber)
-            self.bitcoinTradeService.bitcoinTrade(nomeMoeda: nome!, qtd: self.quantidade, investimento: self.investimento, buffer: buffer)
-        }else if nome == "Tron"{
-            celula.lblQtdDeMoedas.text = formataNumero.formataQuantidadeCoin(qtd: quantidade as! NSNumber)
-            if let urlMoeda = coin.value(forKey: "urlSymbol"){
-                self.binanceService.binanceTrade(nomeMoeda: nome!, moeda: String(describing: urlMoeda), cqtd: self.quantidade, investimento: self.investimento, buffer: buffer)
-            }
+            celula.lblQtdDeMoedas.text = formataNumero.formataQuantidadeBitcoin(qtd: qtd as! NSNumber)
         }else{
-            celula.lblQtdDeMoedas.text = formataNumero.formataQuantidadeCoin(qtd: quantidade as! NSNumber)
-            if let urlMoeda = coin.value(forKey: "urlSymbol"){
-                self.bitfinexService.bitfinexTrade(nomeMoeda: nome!, moeda: String(describing: urlMoeda), cqtd: self.quantidade, investimento: self.investimento, buffer: buffer)
-            }
+            celula.lblQtdDeMoedas.text = formataNumero.formataQuantidadeCoin(qtd: qtd as! NSNumber)
         }
+        
+        
+        let invest = coin.value(forKey: "investimento")
+        celula.lblInvestimentoMedio.text = formataNumero.formataPreco(preco: invest as! NSNumber)
         
         let preco = buffer.meuBuffer[nome!]
-        celula.lblValorAtual.text = self.formataNumero.formataPreco(preco: preco as! NSNumber)
+        celula.lblValorAtual.text = self.formataNumero.formataPreco(preco: preco! as NSNumber)
         
-        var totalLucro = (quantidade * preco!)
-        celula.lblTotal.text = self.formataNumero.formataPreco(preco: totalLucro as NSNumber)
-        viewLucroTotal += totalLucro
+        let totalLucro = coin.value(forKey: "totalLucro")
+        celula.lblTotal.text = self.formataNumero.formataPreco(preco: totalLucro as! NSNumber)
         
-        var porcentagem = 0.0
-        if investimento != 0{
-            porcentagem = ((totalLucro/investimento) - 1)*100
-        }
+        
+        let porcentagem = coin.value(forKey: "porcentagem") as! Double
         celula.lblPorcentagem.text = self.formataNumero.formataPorcentagem(val: porcentagem as NSNumber)
         if porcentagem >= 0{
             celula.lblPorcentagem.textColor = UIColor(red: 0, green: 0.6, blue:0, alpha: 1.0)
         } else{
             celula.lblPorcentagem.textColor = UIColor.red
-        }
-        
-        //verificaLimites(porcentagem: porcentagem, nomeMoeda: nome!)
-        if(indexPath.row == self.coins.count - 1){
-            lblViewInvestimentoTotal.text = "$" + formataNumero.formataPreco(preco: viewInvestimentoTotal as! NSNumber)
-            lblViewLucroTotal.text = "$" +  formataNumero.formataPreco(preco: viewLucroTotal as! NSNumber)
-            var porcentagemTotal : Double = ((viewLucroTotal/viewInvestimentoTotal) - 1)*100
-            lblViewPorcentagem.text = formataNumero.formataPorcentagem(val: porcentagemTotal as NSNumber)
-            if porcentagemTotal >= 0{
-                lblViewPorcentagem.textColor = UIColor(red: 0, green: 0.6, blue:0, alpha: 1.0)
-            } else{
-                lblViewPorcentagem.textColor = UIColor.red
-            }
-            
-            
         }
         
         return celula
