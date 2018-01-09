@@ -178,9 +178,16 @@ class CriaCoins{
         let tron = NSEntityDescription.insertNewObject(forEntityName: "Coin", into: context)
         tron.setValue("Tron", forKey: "nome")
         tron.setValue("TRX", forKey: "sigla")
-        let imageData222 = UIImagePNGRepresentation(#imageLiteral(resourceName: "rrt"))! as NSData
-        tron.setValue(imageData222, forKey: "logo")
+        let imageData26 = UIImagePNGRepresentation(#imageLiteral(resourceName: "tron"))! as NSData
+        tron.setValue(imageData26, forKey: "logo")
         tron.setValue("TRXBTC", forKey: "urlSymbol")
+        
+        let dent = NSEntityDescription.insertNewObject(forEntityName: "Coin", into: context)
+        dent.setValue("Dent", forKey: "nome")
+        dent.setValue("DNT", forKey: "sigla")
+        let imageData27 = UIImagePNGRepresentation(#imageLiteral(resourceName: "dent"))! as NSData
+        dent.setValue(imageData27, forKey: "logo")
+        dent.setValue("DNTBTC", forKey: "urlSymbol")
         
         do{
             try context.save()
