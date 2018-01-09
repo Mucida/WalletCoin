@@ -30,6 +30,7 @@
 		C5AA640A1FE7EDE000C1C7AE /* ComprasTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AA64091FE7EDE000C1C7AE /* ComprasTableViewController.swift */; };
 		C5AA640C1FE7EE0400C1C7AE /* CelulaCompraTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AA640B1FE7EE0300C1C7AE /* CelulaCompraTableViewCell.swift */; };
 		C5AA640E1FE7EE3000C1C7AE /* CompraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AA640D1FE7EE3000C1C7AE /* CompraViewController.swift */; };
+		C5E46BFD2004DE8E0057755F /* BinanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E46BFC2004DE8E0057755F /* BinanceService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		C5AA64091FE7EDE000C1C7AE /* ComprasTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComprasTableViewController.swift; sourceTree = "<group>"; };
 		C5AA640B1FE7EE0300C1C7AE /* CelulaCompraTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelulaCompraTableViewCell.swift; sourceTree = "<group>"; };
 		C5AA640D1FE7EE3000C1C7AE /* CompraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompraViewController.swift; sourceTree = "<group>"; };
+		C5E46BFC2004DE8E0057755F /* BinanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinanceService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				C558428A1FEAAA38008D9F4A /* FormataNumero.swift */,
 				C55842961FEACA15008D9F4A /* BitcoinTradeService.swift */,
 				C55842981FEACA2D008D9F4A /* BitfinexService.swift */,
+				C5E46BFC2004DE8E0057755F /* BinanceService.swift */,
 				C558429A1FEAEE07008D9F4A /* CriaCoins.swift */,
 				C558429C1FEAFD8D008D9F4A /* SelecionaMoedasTableViewController.swift */,
 				C558429E1FEAFDAD008D9F4A /* CelulaSelecionaTableViewCell.swift */,
@@ -198,6 +201,7 @@
 				C558429B1FEAEE07008D9F4A /* CriaCoins.swift in Sources */,
 				C5AA63F11FE7EB8100C1C7AE /* ListaCoinsTableViewController.swift in Sources */,
 				C55842991FEACA2D008D9F4A /* BitfinexService.swift in Sources */,
+				C5E46BFD2004DE8E0057755F /* BinanceService.swift in Sources */,
 				C558429D1FEAFD8D008D9F4A /* SelecionaMoedasTableViewController.swift in Sources */,
 				C558428B1FEAAA38008D9F4A /* FormataNumero.swift in Sources */,
 				C55842941FEABB0B008D9F4A /* Coin+CoreDataClass.swift in Sources */,

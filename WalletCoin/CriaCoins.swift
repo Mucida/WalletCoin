@@ -175,6 +175,13 @@ class CriaCoins{
         recoveryCoin.setValue(imageData23, forKey: "logo")
         recoveryCoin.setValue("rrtusd", forKey: "urlSymbol")
         
+        let tron = NSEntityDescription.insertNewObject(forEntityName: "Coin", into: context)
+        tron.setValue("Tron", forKey: "nome")
+        tron.setValue("TRX", forKey: "sigla")
+        let imageData222 = UIImagePNGRepresentation(#imageLiteral(resourceName: "rrt"))! as NSData
+        tron.setValue(imageData222, forKey: "logo")
+        tron.setValue("TRXBTC", forKey: "urlSymbol")
+        
         do{
             try context.save()
         } catch {

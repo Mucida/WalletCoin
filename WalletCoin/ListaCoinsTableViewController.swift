@@ -17,6 +17,7 @@ class ListaCoinTableViewController: UITableViewController {
     var coins: [NSManagedObject] = []
     let formataNumero = FormataNumero()
     let bitfinexService = BitfinexService()
+    let binanceService = BinanceService()
     let bitcoinTradeService = BitcoinTradeService()
     var totalLucro : Double = 0
     var investimento : Double = 0
@@ -103,10 +104,15 @@ class ListaCoinTableViewController: UITableViewController {
         viewInvestimentoTotal += investimento
         celula.lblInvestimentoMedio.text = formataNumero.formataPreco(preco: investimento as! NSNumber)
         
-        
+        let precoBitcoin = self.binanceService.binanceTradeBitcoin(buffer: buffer)
         if nome == "Bitcoin"{
             celula.lblQtdDeMoedas.text = formataNumero.formataQuantidadeBitcoin(qtd: quantidade as! NSNumber)
             self.bitcoinTradeService.bitcoinTrade(nomeMoeda: nome!, qtd: self.quantidade, investimento: self.investimento, buffer: buffer)
+        }else if nome == "Tron"{
+            celula.lblQtdDeMoedas.text = formataNumero.formataQuantidadeCoin(qtd: quantidade as! NSNumber)
+            if let urlMoeda = coin.value(forKey: "urlSymbol"){
+                self.binanceService.binanceTrade(nomeMoeda: nome!, moeda: String(describing: urlMoeda), cqtd: self.quantidade, investimento: self.investimento, buffer: buffer)
+            }
         }else{
             celula.lblQtdDeMoedas.text = formataNumero.formataQuantidadeCoin(qtd: quantidade as! NSNumber)
             if let urlMoeda = coin.value(forKey: "urlSymbol"){
