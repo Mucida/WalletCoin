@@ -36,6 +36,8 @@ class Buffer {
         meuBuffer["QASH"] = 0
         meuBuffer["YOYOW"] = 0
         meuBuffer["Recovery Right"] = 0
+        meuBuffer["Golem"] = 0
+        meuBuffer["Status"] = 0
         meuBuffer["Tron"] = 0
         meuBuffer["BitcoinDolar"] = 0
     }

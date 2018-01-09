@@ -94,4 +94,19 @@ class SelecionaMoedasTableViewController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.delete) {
+            let coin = coins[indexPath.row]
+            self.context.delete(coin)
+            self.coins.remove(at: indexPath.row)
+            
+            do{
+                try context.save()
+                self.tableView.deleteRows(at: [indexPath], with: .fade)
+            }catch{
+                print("erro ao remover")
+            }
+        }
+    }
+    
 }

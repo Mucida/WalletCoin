@@ -175,6 +175,33 @@ class CriaCoins{
         recoveryCoin.setValue(imageData23, forKey: "logo")
         recoveryCoin.setValue("rrtusd", forKey: "urlSymbol")
         
+        let golem = NSEntityDescription.insertNewObject(forEntityName: "Coin", into: context)
+        golem.setValue("Golem", forKey: "nome")
+        golem.setValue("GNT", forKey: "sigla")
+        let imageData24 = UIImagePNGRepresentation(#imageLiteral(resourceName: "golem"))! as NSData
+        golem.setValue(imageData24, forKey: "logo")
+        golem.setValue("gtnusd", forKey: "urlSymbol")
+        
+        let status = NSEntityDescription.insertNewObject(forEntityName: "Coin", into: context)
+        status.setValue("Status", forKey: "nome")
+        status.setValue("SNT", forKey: "sigla")
+        let imageData25 = UIImagePNGRepresentation(#imageLiteral(resourceName: "status"))! as NSData
+        status.setValue(imageData25, forKey: "logo")
+        status.setValue("sntusd", forKey: "urlSymbol")
+        
+
+        
+        do{
+            try context.save()
+        } catch {
+            print("Erroa o salvar as coins")
+        }
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(false, forKey: "firstRun")
+        
+    }
+    
+    func addCoin(context: NSManagedObjectContext){
         let tron = NSEntityDescription.insertNewObject(forEntityName: "Coin", into: context)
         tron.setValue("Tron", forKey: "nome")
         tron.setValue("TRX", forKey: "sigla")
@@ -196,7 +223,6 @@ class CriaCoins{
         }
         let userDefaults = UserDefaults.standard
         userDefaults.set(false, forKey: "firstRun")
-        
     }
     
 }

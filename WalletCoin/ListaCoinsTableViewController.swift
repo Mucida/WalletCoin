@@ -44,6 +44,7 @@ class ListaCoinTableViewController: UITableViewController {
         //soh cria as coins uma vez
         if def.bool(forKey: "firstRun") { cc.criaCoins(context: context) }
         //cc.criaCoins(context: context)
+        cc.addCoin(context: context)
         
         
         // Do any additional setup after loading the view, typically from a nib.
