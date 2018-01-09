@@ -87,7 +87,7 @@ class CriaCoins{
         let santimentCoin = NSEntityDescription.insertNewObject(forEntityName: "Coin", into: context)
         santimentCoin.setValue("Santiment", forKey: "nome")
         santimentCoin.setValue("SAN", forKey: "sigla")
-        let imageData11 = UIImagePNGRepresentation(#imageLiteral(resourceName: "santiment"))! as NSData
+        let imageData11 = UIImagePNGRepresentation(#imageLiteral(resourceName: "sant3"))! as NSData
         santimentCoin.setValue(imageData11, forKey: "logo")
         santimentCoin.setValue("sanusd", forKey: "urlSymbol")
         
@@ -122,7 +122,7 @@ class CriaCoins{
         let qtumCoin = NSEntityDescription.insertNewObject(forEntityName: "Coin", into: context)
         qtumCoin.setValue("Qtum", forKey: "nome")
         qtumCoin.setValue("QTUM", forKey: "sigla")
-        let imageData16 = UIImagePNGRepresentation(#imageLiteral(resourceName: "qtum"))! as NSData
+        let imageData16 = UIImagePNGRepresentation(#imageLiteral(resourceName: "quantum"))! as NSData
         qtumCoin.setValue(imageData16, forKey: "logo")
         qtumCoin.setValue("qtmusd", forKey: "urlSymbol")
         
@@ -150,14 +150,14 @@ class CriaCoins{
         let streamCoin = NSEntityDescription.insertNewObject(forEntityName: "Coin", into: context)
         streamCoin.setValue("StreamR", forKey: "nome")
         streamCoin.setValue("DATA", forKey: "sigla")
-        let imageData20 = UIImagePNGRepresentation(#imageLiteral(resourceName: "stream"))! as NSData
+        let imageData20 = UIImagePNGRepresentation(#imageLiteral(resourceName: "data2"))! as NSData
         streamCoin.setValue(imageData20, forKey: "logo")
         streamCoin.setValue("datusd", forKey: "urlSymbol")
         
         let qashCoin = NSEntityDescription.insertNewObject(forEntityName: "Coin", into: context)
         qashCoin.setValue("QASH", forKey: "nome")
         qashCoin.setValue("QASH", forKey: "sigla")
-        let imageData21 = UIImagePNGRepresentation(#imageLiteral(resourceName: "qash2"))! as NSData
+        let imageData21 = UIImagePNGRepresentation(#imageLiteral(resourceName: "quash3"))! as NSData
         qashCoin.setValue(imageData21, forKey: "logo")
         qashCoin.setValue("qshusd", forKey: "urlSymbol")
         

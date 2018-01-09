@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 class ListaCoinTableViewController: UITableViewController {
     
@@ -24,6 +25,13 @@ class ListaCoinTableViewController: UITableViewController {
     var repeating: Timer?
     let cc = CriaCoins()
     var buffer = Buffer()
+    var viewInvestimentoTotal : Double = 0
+    var viewLucroTotal : Double = 0
+    
+    @IBOutlet weak var lblViewPorcentagem: UILabel!
+    @IBOutlet weak var lblViewLucroTotal: UILabel!
+    @IBOutlet weak var lblViewInvestimentoTotal: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +86,10 @@ class ListaCoinTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if(indexPath.row <= 1){
+            viewLucroTotal = 0
+            viewInvestimentoTotal = 0
+        }
         let coin = coins[indexPath.row]
         let celula = tableView.dequeueReusableCell(withIdentifier: "celulaCoin", for: indexPath) as! CoinTableViewCell
         
@@ -86,18 +98,19 @@ class ListaCoinTableViewController: UITableViewController {
         celula.lblSigla.text = coin.value(forKey: "sigla") as? String
         let imagem: Data = coin.value(forKey: "logo") as! Data
         celula.imgLogo.image = UIImage(data: imagem)
-        quantidade = coin.value(forKey: "qtd") as! Double
-        celula.lblQtdDeMoedas.text = formataNumero.formataQuantidadeBitcoin(qtd: quantidade as! NSNumber)
+        quantidade = coin.value(forKey: "qtd") as! Double        
         investimento = coin.value(forKey: "investimento") as! Double
+        viewInvestimentoTotal += investimento
         celula.lblInvestimentoMedio.text = formataNumero.formataPreco(preco: investimento as! NSNumber)
         
         
         if nome == "Bitcoin"{
+            celula.lblQtdDeMoedas.text = formataNumero.formataQuantidadeBitcoin(qtd: quantidade as! NSNumber)
             self.bitcoinTradeService.bitcoinTrade(nomeMoeda: nome!, qtd: self.quantidade, investimento: self.investimento, buffer: buffer)
         }else{
+            celula.lblQtdDeMoedas.text = formataNumero.formataQuantidadeCoin(qtd: quantidade as! NSNumber)
             if let urlMoeda = coin.value(forKey: "urlSymbol"){
                 self.bitfinexService.bitfinexTrade(nomeMoeda: nome!, moeda: String(describing: urlMoeda), cqtd: self.quantidade, investimento: self.investimento, buffer: buffer)
-                
             }
         }
         
@@ -106,22 +119,69 @@ class ListaCoinTableViewController: UITableViewController {
         
         var totalLucro = (quantidade * preco!)
         celula.lblTotal.text = self.formataNumero.formataPreco(preco: totalLucro as NSNumber)
+        viewLucroTotal += totalLucro
         
         var porcentagem = 0.0
         if investimento != 0{
             porcentagem = ((totalLucro/investimento) - 1)*100
         }
         celula.lblPorcentagem.text = self.formataNumero.formataPorcentagem(val: porcentagem as NSNumber)
-        if porcentagem >= 0{                                        celula.lblPorcentagem.textColor = UIColor.green
+        if porcentagem >= 0{
+            celula.lblPorcentagem.textColor = UIColor(red: 0, green: 0.6, blue:0, alpha: 1.0)
         } else{
             celula.lblPorcentagem.textColor = UIColor.red
         }
         
-        
-        
+        //verificaLimites(porcentagem: porcentagem, nomeMoeda: nome!)
+        if(indexPath.row == self.coins.count - 1){
+            lblViewInvestimentoTotal.text = "$" + formataNumero.formataPreco(preco: viewInvestimentoTotal as! NSNumber)
+            lblViewLucroTotal.text = "$" +  formataNumero.formataPreco(preco: viewLucroTotal as! NSNumber)
+            var porcentagemTotal : Double = ((viewLucroTotal/viewInvestimentoTotal) - 1)*100
+            lblViewPorcentagem.text = formataNumero.formataPorcentagem(val: porcentagemTotal as NSNumber)
+            if porcentagemTotal >= 0{
+                lblViewPorcentagem.textColor = UIColor(red: 0, green: 0.6, blue:0, alpha: 1.0)
+            } else{
+                lblViewPorcentagem.textColor = UIColor.red
+            }
+            
+            
+        }
         
         return celula
     }
+    
+    //alerta de limites
+    /*func verificaLimites(porcentagem: Double, nomeMoeda: String){
+        
+        let storyboard: UIStoryboard =
+            UIStoryboard.init(name: "Main",bundle: nil);
+        
+        let limitesViewController:
+            LimitesViewController = storyboard.instantiateViewController(withIdentifier: "Main") as! LimitesViewController;
+
+        let limites = limitesViewController.getLimites()
+        
+        
+        if limites.limiteSuperior >= porcentagem{
+            let notification = UNMutableNotificationContent()
+            notification.title = "Alerta variação positiva!"
+            notification.subtitle = nomeMoeda + "em alta!"
+            notification.body = "O lucro obtido com " + nomeMoeda + "ultrapassou o limite superior estabelecido nas configurações"
+            let notificationTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+            let request = UNNotificationRequest(identifier: "notification1", content: notification, trigger: notificationTrigger)
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        }
+        if limites.limiteInferior <= porcentagem{
+            let notification = UNMutableNotificationContent()
+            notification.title = "Alerta variação negativa!"
+            notification.subtitle = nomeMoeda + "em baixa!"
+            notification.body = "O lucro obtido com " + nomeMoeda + "ultrapassou o limite inferior estabelecido nas configurações"
+            let notificationTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+            let request = UNNotificationRequest(identifier: "notification2", content: notification, trigger: notificationTrigger)
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        }
+    }*/
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "toCompraTable"){

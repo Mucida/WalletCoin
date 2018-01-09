@@ -35,6 +35,16 @@ class FormataNumero{
         return "0.00"
     }
     
+    func formataQuantidadeCoin(qtd: NSNumber) -> String{
+        nf.numberStyle = .decimal
+        nf.minimumFractionDigits = 2
+        nf.maximumFractionDigits = 2
+        if let qtdFinal = nf.string(from: qtd) {
+            return qtdFinal
+        }
+        return "0.00"
+    }
+    
     func formataPorcentagem(val: NSNumber) -> String{
         nf.numberStyle = .decimal
         nf.minimumFractionDigits = 2

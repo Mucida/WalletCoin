@@ -93,6 +93,37 @@ class ComprasTableViewController: UITableViewController {
         return celula
     }
     
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.delete) {
+            let compra = compras[indexPath.row]
+            let qtdCompra = compra.value(forKey: "qtd") as! Double
+            let qtdTotal = coin.value(forKey: "qtd") as! Double
+            coin.setValue(qtdTotal-qtdCompra, forKey: "qtd")
+            //linha abaixo usada para teste de edição e deleção de compras
+            //coin.setValue(0, forKey: "qtd")
+            let valorUnitarioCompra = compra.value(forKey: "valorUnitario") as! Double
+            let valorBitcoinCompra = compra.value(forKey: "valorBitcoin") as! Double
+            let investimentoCompra = qtdCompra*valorBitcoinCompra*valorUnitarioCompra
+            let investimentoTotal = coin.value(forKey: "investimento") as! Double
+            coin.setValue(investimentoTotal-investimentoCompra, forKey: "investimento")
+            //linha abaixo usada para teste de edição e deleção de compras
+            //coin.setValue(0, forKey: "investimento")
+            self.context.delete(compra)
+            self.compras.remove(at: indexPath.row)
+            
+            do{
+                try context.save()
+                self.tableView.deleteRows(at: [indexPath], with: .fade)
+            }catch{
+                print("erro ao remover")
+            }
+        }
+    }
+    
 
     @IBAction func adicionar(_ sender: Any) {
         performSegue(withIdentifier: "toCompra", sender: self)
@@ -103,6 +134,16 @@ class ComprasTableViewController: UITableViewController {
             let viewControllerDestino = segue.destination as! CompraViewController
             viewControllerDestino.coin = coin;
         }
+        if (segue.identifier == "toCompraEdit"){
+            let viewControllerDestino = segue.destination as! CompraViewController
+            if let index = tableView.indexPathForSelectedRow{
+                viewControllerDestino.compraEditada = compras[index.row]
+                viewControllerDestino.coin = coin;
+                
+            }
+            
+        }
+        
     }
 
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C50CAD741FED3307005C0D34 /* Limite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50CAD731FED3307005C0D34 /* Limite.swift */; };
+		C50CAD761FED33FE005C0D34 /* LimitesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50CAD751FED33FE005C0D34 /* LimitesViewController.swift */; };
 		C558428B1FEAAA38008D9F4A /* FormataNumero.swift in Sources */ = {isa = PBXBuildFile; fileRef = C558428A1FEAAA38008D9F4A /* FormataNumero.swift */; };
 		C558428E1FEAB9C6008D9F4A /* Compra+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C558428C1FEAB9C6008D9F4A /* Compra+CoreDataProperties.swift */; };
 		C558428F1FEAB9C6008D9F4A /* Coin+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C558428D1FEAB9C6008D9F4A /* Coin+CoreDataProperties.swift */; };
@@ -31,6 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C50CAD731FED3307005C0D34 /* Limite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Limite.swift; sourceTree = "<group>"; };
+		C50CAD751FED33FE005C0D34 /* LimitesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitesViewController.swift; sourceTree = "<group>"; };
 		C558428A1FEAAA38008D9F4A /* FormataNumero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormataNumero.swift; sourceTree = "<group>"; };
 		C558428C1FEAB9C6008D9F4A /* Compra+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Compra+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C558428D1FEAB9C6008D9F4A /* Coin+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coin+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -90,6 +94,7 @@
 		C5AA63ED1FE7EB8100C1C7AE /* WalletCoin */ = {
 			isa = PBXGroup;
 			children = (
+				C50CAD731FED3307005C0D34 /* Limite.swift */,
 				C5AA63EE1FE7EB8100C1C7AE /* AppDelegate.swift */,
 				C5AA63F21FE7EB8100C1C7AE /* Main.storyboard */,
 				C5AA63F81FE7EB8100C1C7AE /* Assets.xcassets */,
@@ -108,6 +113,7 @@
 				C558429C1FEAFD8D008D9F4A /* SelecionaMoedasTableViewController.swift */,
 				C558429E1FEAFDAD008D9F4A /* CelulaSelecionaTableViewCell.swift */,
 				C55842A01FEC2157008D9F4A /* Buffer.swift */,
+				C50CAD751FED33FE005C0D34 /* LimitesViewController.swift */,
 			);
 			path = WalletCoin;
 			sourceTree = "<group>";
@@ -188,6 +194,7 @@
 				C55842951FEABB0B008D9F4A /* Compra+CoreDataClass.swift in Sources */,
 				C558428E1FEAB9C6008D9F4A /* Compra+CoreDataProperties.swift in Sources */,
 				C5AA64081FE7EC7B00C1C7AE /* CoinTableViewCell.swift in Sources */,
+				C50CAD761FED33FE005C0D34 /* LimitesViewController.swift in Sources */,
 				C558429B1FEAEE07008D9F4A /* CriaCoins.swift in Sources */,
 				C5AA63F11FE7EB8100C1C7AE /* ListaCoinsTableViewController.swift in Sources */,
 				C55842991FEACA2D008D9F4A /* BitfinexService.swift in Sources */,
@@ -198,6 +205,7 @@
 				C5AA640A1FE7EDE000C1C7AE /* ComprasTableViewController.swift in Sources */,
 				C5AA63F71FE7EB8100C1C7AE /* WalletCoin.xcdatamodeld in Sources */,
 				C5AA640C1FE7EE0400C1C7AE /* CelulaCompraTableViewCell.swift in Sources */,
+				C50CAD741FED3307005C0D34 /* Limite.swift in Sources */,
 				C5AA640E1FE7EE3000C1C7AE /* CompraViewController.swift in Sources */,
 				C558428F1FEAB9C6008D9F4A /* Coin+CoreDataProperties.swift in Sources */,
 				C5AA63EF1FE7EB8100C1C7AE /* AppDelegate.swift in Sources */,
