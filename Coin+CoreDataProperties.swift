@@ -2,8 +2,8 @@
 //  Coin+CoreDataProperties.swift
 //  WalletCoin
 //
-//  Created by Lucas Mucida Costa on 20/12/17.
-//  Copyright © 2017 Lucas Mucida Costa. All rights reserved.
+//  Created by Lucas Mucida Costa on 10/01/2018.
+//  Copyright © 2018 Lucas Mucida Costa. All rights reserved.
 //
 //
 
@@ -18,13 +18,15 @@ extension Coin {
     }
 
     @NSManaged public var emUso: Bool
+    @NSManaged public var investimento: Double
     @NSManaged public var logo: NSData?
     @NSManaged public var nome: String?
+    @NSManaged public var porcentagem: Double
     @NSManaged public var qtd: Double
     @NSManaged public var sigla: String?
-    @NSManaged public var valor: Double
-    @NSManaged public var investimento: Double
+    @NSManaged public var totalLucro: Double
     @NSManaged public var urlSymbol: String?
+    @NSManaged public var valor: Double
     @NSManaged public var compra: NSSet?
 
 }

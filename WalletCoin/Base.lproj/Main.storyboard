@@ -44,7 +44,7 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T8P-IR-1x9">
+                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T8P-IR-1x9">
                                     <rect key="frame" x="250" y="16" width="100" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="21" id="UIf-qQ-VLP"/>
@@ -60,7 +60,7 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.000,00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RXA-OW-RJ9">
+                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.000,00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RXA-OW-RJ9">
                                     <rect key="frame" x="121" y="23" width="127" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="127" id="u9e-B7-Byy"/>
@@ -590,7 +590,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Valor do Bitcoin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOc-L0-hNU">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Valor do Bitcoin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOc-L0-hNU">
                                 <rect key="frame" x="16" y="350" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -673,7 +673,6 @@
                             <constraint firstAttribute="bottom" secondItem="fxM-Tr-LmL" secondAttribute="bottom" constant="43" id="vBb-ul-l4q"/>
                             <constraint firstItem="9O7-mG-wvt" firstAttribute="centerX" secondItem="fxM-Tr-LmL" secondAttribute="centerX" constant="-3.5" id="vgc-L9-cUx"/>
                             <constraint firstItem="9O7-mG-wvt" firstAttribute="trailing" secondItem="cOc-L0-hNU" secondAttribute="trailing" id="xGh-n8-e2g"/>
-                            <constraint firstItem="MEa-Gc-PqL" firstAttribute="top" secondItem="cOc-L0-hNU" secondAttribute="bottom" constant="8" symbolic="YES" id="zYl-5I-bGo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eKe-38-9Ez"/>
                     </view>

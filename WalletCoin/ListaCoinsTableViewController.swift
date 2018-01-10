@@ -48,7 +48,12 @@ class ListaCoinTableViewController: UITableViewController {
         //         cc.addCoin(context: context)
         
         
-        // Do any additional setup after loading the view, typically from a nib.
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ListaCoinTableViewController.buscaCoinPorCoinPorcent))
+        let tap2 = UITapGestureRecognizer(target: self, action: #selector(ListaCoinTableViewController.buscaCoinPorCoin))
+        lblViewPorcentagem.isUserInteractionEnabled = true
+        lblViewPorcentagem.addGestureRecognizer(tap)
+        lblViewLucroTotal.isUserInteractionEnabled = true
+        lblViewLucroTotal.addGestureRecognizer(tap2)
     }
     
     override func didReceiveMemoryWarning() {
@@ -109,11 +114,25 @@ class ListaCoinTableViewController: UITableViewController {
     }
     
     
-    func buscaCoinPorCoin(){
+    @objc func buscaCoinPorCoin(){
         var requisicao = NSFetchRequest<NSFetchRequestResult>(entityName: "Coin")
         do {
             requisicao.predicate = NSPredicate(format: "emUso == %@", NSNumber(value: true))
             let sort = NSSortDescriptor(key: #keyPath(Coin.nome), ascending: true)
+            requisicao.sortDescriptors = [sort]
+            let coinsRecuperadas = try context.fetch(requisicao)
+            self.coins = coinsRecuperadas as! [NSManagedObject]
+            self.tableView.reloadData()
+        } catch let erro as NSError{
+            print("Erro: \(erro.description)")
+        }
+    }
+    
+    @objc func buscaCoinPorCoinPorcent(){
+        var requisicao = NSFetchRequest<NSFetchRequestResult>(entityName: "Coin")
+        do {
+            requisicao.predicate = NSPredicate(format: "emUso == %@", NSNumber(value: true))
+            let sort = NSSortDescriptor(key: #keyPath(Coin.porcentagem), ascending: false)
             requisicao.sortDescriptors = [sort]
             let coinsRecuperadas = try context.fetch(requisicao)
             self.coins = coinsRecuperadas as! [NSManagedObject]
