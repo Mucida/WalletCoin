@@ -23,6 +23,7 @@ class CompraViewController: UIViewController {
     var coin : NSManagedObject!
     var compraEditada : NSManagedObject!
     var qtdGuardada : Double = 0
+    let formataNumero = FormataNumero()
     var investimentoGuardado : Double = 0
     var unitarioGuardado : Double  = 0
     var bitGuardado : Double = 0
@@ -50,21 +51,17 @@ class CompraViewController: UIViewController {
     func carregaCompraEditada(nome: String){
         if let qtd = compraEditada.value(forKey: "qtd") as? Double{
             qtdGuardada = qtd
-            let qtdf = String(qtd)
-            txtQtd.text = qtdf
+            txtQtd.text = formataNumero.formataQuantidadeCoin(qtd: qtd as NSNumber)
         }
         if let unitario = compraEditada.value(forKey: "valorUnitario") as? Double{
             unitarioGuardado = unitario
-            let unitariof = String(unitario)
-            print("aqui: " + nome)
             if nome != "Bitcoin"{
-                txtValorUnitario.text = unitariof
+                txtValorUnitario.text = formataNumero.formataQuantidadeBitcoin(qtd: unitario as NSNumber)
             }
         }
         if let bit = compraEditada.value(forKey: "valorBitcoin") as? Double{
             bitGuardado = bit
-            let bitf = String(bit)
-            txtValorBitcoin.text = bitf
+            txtValorBitcoin.text = formataNumero.formataPreco(preco: bit as NSNumber)
         }
         investimentoGuardado = qtdGuardada*unitarioGuardado*bitGuardado
         if let dataEditada = compraEditada.value(forKey: "data") as? Date{
