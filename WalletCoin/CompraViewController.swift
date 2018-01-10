@@ -49,19 +49,20 @@ class CompraViewController: UIViewController {
     
     //carrega nos campos e guarda os valores da compra antes da ediçao
     func carregaCompraEditada(nome: String){
+        let nf = NumberFormatter()
         if let qtd = compraEditada.value(forKey: "qtd") as? Double{
             qtdGuardada = qtd
-            txtQtd.text = formataNumero.formataQuantidadeCoin(qtd: qtd as NSNumber)
+            txtQtd.text = formataNumero.formataQuantidadeCoinEditado(qtd: qtd as NSNumber)
         }
         if let unitario = compraEditada.value(forKey: "valorUnitario") as? Double{
             unitarioGuardado = unitario
             if nome != "Bitcoin"{
-                txtValorUnitario.text = formataNumero.formataQuantidadeBitcoin(qtd: unitario as NSNumber)
+                txtValorUnitario.text = formataNumero.formataQuantidadeBitcoinEditado(qtd: unitario as NSNumber)
             }
         }
         if let bit = compraEditada.value(forKey: "valorBitcoin") as? Double{
             bitGuardado = bit
-            txtValorBitcoin.text = formataNumero.formataPreco(preco: bit as NSNumber)
+            txtValorBitcoin.text = formataNumero.formataPrecoEditado(preco: bit as NSNumber)
         }
         investimentoGuardado = qtdGuardada*unitarioGuardado*bitGuardado
         if let dataEditada = compraEditada.value(forKey: "data") as? Date{
@@ -118,6 +119,8 @@ class CompraViewController: UIViewController {
     
     func salvaCompra(compra: NSManagedObject){
         
+        let nf = NumberFormatter()
+        nf.decimalSeparator = "."
         var qtdC:Double=0
         var valorUnitarioC:Double=0
         var valorBitcoinC:Double=0
@@ -126,24 +129,30 @@ class CompraViewController: UIViewController {
         print(self.txtQtd.text)
         
         if let qtd = self.txtQtd.text{
-            qtdC = Double(qtd)!
+            var quantidadeFormatada = qtd.replacingOccurrences(of: ",", with: ".")
+            quantidadeFormatada = formataNumero.formataQuantidadeCoinEditado(qtd: Double(quantidadeFormatada) as! NSNumber)
+            qtdC = Double(quantidadeFormatada)!
             compra.setValue(qtdC, forKey: "qtd")
         }
         if nome == "Bitcoin"{
             valorUnitarioC = 1
             txtValorUnitario.isEnabled = false
-            txtValorUnitario.text = "1"
+            txtValorUnitario.text = "1.0"
              compra.setValue(valorUnitarioC, forKey: "valorUnitario")
         }else{
             if let valorUnitario = self.txtValorUnitario.text{
-                valorUnitarioC = Double(valorUnitario)!
-                compra.setValue(Double(valorUnitario), forKey: "valorUnitario")
+                var valorUnitarioFormatado = valorUnitario.replacingOccurrences(of: ",", with: ".")
+                valorUnitarioFormatado = formataNumero.formataQuantidadeBitcoinEditado(qtd: Double(valorUnitarioFormatado) as! NSNumber)
+                valorUnitarioC = Double(valorUnitarioFormatado)!
+                compra.setValue(Double(valorUnitarioC), forKey: "valorUnitario")
                 txtValorUnitario.isEnabled = true
             }
         }
         if let valorBitcoin = self.txtValorBitcoin.text{
-            valorBitcoinC = Double(valorBitcoin)!
-            compra.setValue(Double(valorBitcoin), forKey: "valorBitcoin")
+            var valorBitcoinFormatado = valorBitcoin.replacingOccurrences(of: ",", with: ".")
+            valorBitcoinFormatado = formataNumero.formataPrecoEditado(preco: Double(valorBitcoinFormatado) as! NSNumber)
+            valorBitcoinC = Double(valorBitcoinFormatado)!
+            compra.setValue(Double(valorBitcoinC), forKey: "valorBitcoin")
         }
         compra.setValue(dataCompra.date, forKey: "data")
         compra.setValue(coin, forKey: "relCoin")
@@ -177,24 +186,30 @@ class CompraViewController: UIViewController {
         
         
         if let qtd = self.txtQtd.text {
-            qtdC = Double(qtd)!
-            compra.setValue(Double(qtd), forKey: "qtd")
+            var quantidadeFormatada = qtd.replacingOccurrences(of: ",", with: ".")
+            quantidadeFormatada = formataNumero.formataQuantidadeCoinEditado(qtd: Double(quantidadeFormatada) as! NSNumber)
+            qtdC = Double(quantidadeFormatada)!
+            compra.setValue(qtdC, forKey: "qtd")
         }
         if nome == "Bitcoin"{
             valorUnitarioC = 1
             txtValorUnitario.isEnabled = false
-            txtValorUnitario.text = "1"
+            txtValorUnitario.text = "1.0"
             compra.setValue(valorUnitarioC, forKey: "valorUnitario")
         }else{
             if let valorUnitario = self.txtValorUnitario.text{
-                valorUnitarioC = Double(valorUnitario)!
-                compra.setValue(Double(valorUnitario), forKey: "valorUnitario")
+                var valorUnitarioFormatado = valorUnitario.replacingOccurrences(of: ",", with: ".")
+                valorUnitarioFormatado = formataNumero.formataQuantidadeBitcoinEditado(qtd: Double(valorUnitarioFormatado) as! NSNumber)
+                valorUnitarioC = Double(valorUnitarioFormatado)!
+                compra.setValue(Double(valorUnitarioC), forKey: "valorUnitario")
                 txtValorUnitario.isEnabled = true
             }
         }
         if let valorBitcoin = self.txtValorBitcoin.text{
-            valorBitcoinC = Double(valorBitcoin)!
-            compra.setValue(Double(valorBitcoin), forKey: "valorBitcoin")
+            var valorBitcoinFormatado = valorBitcoin.replacingOccurrences(of: ",", with: ".")
+            valorBitcoinFormatado = formataNumero.formataPrecoEditado(preco: Double(valorBitcoinFormatado) as! NSNumber)
+            valorBitcoinC = Double(valorBitcoinFormatado)!
+            compra.setValue(Double(valorBitcoinC), forKey: "valorBitcoin")
         }
         compra.setValue(dataCompra.date, forKey: "data")
         compra.setValue(coin, forKey: "relCoin")

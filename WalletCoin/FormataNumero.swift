@@ -57,4 +57,36 @@ class FormataNumero{
         return "0.0%"
     }
     
+    
+    func formataPrecoEditado(preco: NSNumber) -> String{
+        nf.decimalSeparator = "."
+        nf.minimumFractionDigits = 2
+        nf.maximumFractionDigits = 2
+        
+        if let precoFinal = nf.string(from: preco) {
+            return precoFinal
+        }
+        return "0.00"
+    }
+    
+    func formataQuantidadeBitcoinEditado(qtd: NSNumber) -> String{
+        nf.decimalSeparator = "."
+        nf.minimumFractionDigits = 8
+        nf.maximumFractionDigits = 8
+        if let qtdFinal = nf.string(from: qtd) {
+            return qtdFinal
+        }
+        return "0.00"
+    }
+    
+    func formataQuantidadeCoinEditado(qtd: NSNumber) -> String{
+        nf.decimalSeparator = "."
+        nf.minimumFractionDigits = 2
+        nf.maximumFractionDigits = 2
+        if let qtdFinal = nf.string(from: qtd) {
+            return qtdFinal
+        }
+        return "0.00"
+    }
+    
 }

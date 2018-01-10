@@ -107,7 +107,7 @@
             condition = "if nome == &quot;OmiseGo&quot;"
             continueAfterRunningActions = "No"
             filePath = "WalletCoin/ListaCoinsTableViewController.swift"
-            timestampString = "537285328.77349"
+            timestampString = "537302964.24713"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "223"
@@ -123,11 +123,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WalletCoin/CompraViewController.swift"
-            timestampString = "537285328.773995"
+            timestampString = "537302964.247619"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "carregaCompraEditada(nome:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -139,11 +139,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WalletCoin/CompraViewController.swift"
-            timestampString = "537285328.7740639"
+            timestampString = "537302964.248052"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "salvaCompra(compra:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -155,11 +155,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WalletCoin/CompraViewController.swift"
-            timestampString = "537285328.774128"
+            timestampString = "537302964.248378"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "btnConfirmar(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -171,11 +171,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WalletCoin/CompraViewController.swift"
-            timestampString = "537285328.7741899"
+            timestampString = "537302964.2487119"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
             landmarkName = "salvaCompraEditada(compra:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -187,7 +187,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WalletCoin/BinanceService.swift"
-            timestampString = "537285328.774256"
+            timestampString = "537296190.05319"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "27"
@@ -203,7 +203,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WalletCoin/BinanceService.swift"
-            timestampString = "537285328.774586"
+            timestampString = "537296190.096524"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "35"
@@ -219,7 +219,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WalletCoin/BinanceService.swift"
-            timestampString = "537285328.774874"
+            timestampString = "537296190.096813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "40"
@@ -283,7 +283,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WalletCoin/BinanceService.swift"
-            timestampString = "537285328.775218"
+            timestampString = "537296190.097138"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "45"
@@ -315,7 +315,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WalletCoin/BinanceService.swift"
-            timestampString = "537285328.77553"
+            timestampString = "537296190.09743"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "41"
@@ -331,11 +331,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WalletCoin/CompraViewController.swift"
-            timestampString = "537285328.775818"
+            timestampString = "537302964.249168"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
             landmarkName = "salvaCompra(compra:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -347,11 +347,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WalletCoin/CompraViewController.swift"
-            timestampString = "537285328.775885"
+            timestampString = "537302964.249492"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
             landmarkName = "salvaCompraEditada(compra:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -359,15 +359,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WalletCoin/CompraViewController.swift"
-            timestampString = "537285328.775949"
+            timestampString = "537302964.249815"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "carregaCompraEditada(nome:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -379,7 +379,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WalletCoin/ListaCoinsTableViewController.swift"
-            timestampString = "537285328.7760119"
+            timestampString = "537302964.250134"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "222"
@@ -395,11 +395,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WalletCoin/CompraViewController.swift"
-            timestampString = "537285328.776328"
+            timestampString = "537302964.250458"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
             landmarkName = "salvaCompraEditada(compra:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -411,7 +411,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WalletCoin/ListaCoinsTableViewController.swift"
-            timestampString = "537285328.7764"
+            timestampString = "537302964.250778"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "69"
@@ -427,12 +427,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WalletCoin/ListaCoinsTableViewController.swift"
-            timestampString = "537285328.776704"
+            timestampString = "537302964.251133"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "67"
             endingLineNumber = "67"
             landmarkName = "recarregaInvestimentos()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WalletCoin/CompraViewController.swift"
+            timestampString = "537302964.2515171"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "salvaCompra(compra:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

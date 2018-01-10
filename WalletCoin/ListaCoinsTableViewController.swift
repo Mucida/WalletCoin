@@ -45,7 +45,7 @@ class ListaCoinTableViewController: UITableViewController {
         //soh cria as coins uma vez
         if def.bool(forKey: "firstRun") { cc.criaCoins(context: context) }
         //cc.criaCoins(context: context)
-        //cc.addCoin(context: context)
+        //         cc.addCoin(context: context)
         
         
         // Do any additional setup after loading the view, typically from a nib.
@@ -230,6 +230,11 @@ class ListaCoinTableViewController: UITableViewController {
             celula.lblTotal.text = self.formataNumero.formataPreco(preco: totalLucro as! NSNumber)
         }
         
+        //if(nome == "Tron" || nome == "Dent"){
+           // celula.contentView.backgroundColor = UIColor(red: 0, green: 0, blue:1, alpha: 0.1)
+        //}else{
+           // celula.contentView.backgroundColor = UIColor(red: 1, green: 1, blue:1, alpha: 1.0)
+       // }
         
         if let porcentagem = coin.value(forKey: "porcentagem") as? Double{
             celula.lblPorcentagem.text = self.formataNumero.formataPorcentagem(val: porcentagem as NSNumber)
