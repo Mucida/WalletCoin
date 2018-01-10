@@ -194,6 +194,7 @@ class CompraViewController: UIViewController {
         }
         if let valorBitcoin = self.txtValorBitcoin.text{
             valorBitcoinC = Double(valorBitcoin)!
+            compra.setValue(Double(valorBitcoin), forKey: "valorBitcoin")
         }
         compra.setValue(dataCompra.date, forKey: "data")
         compra.setValue(coin, forKey: "relCoin")

@@ -60,6 +60,54 @@ class ListaCoinTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
+
+    
+    func recarregaInvestimentos(){
+        
+        for coin in coins{
+            let nome = coin.value(forKey: "nome") as! String
+                var compras : [NSManagedObject] = []
+                let requisicao = NSFetchRequest<NSFetchRequestResult>(entityName: "Compra")
+                do {
+                    requisicao.predicate = NSPredicate(format: "relCoin.nome = %@", coin.value(forKey: "nome") as! CVarArg)
+                    let comprasRecuperadas = try context.fetch(requisicao)
+                    compras = comprasRecuperadas as! [NSManagedObject]
+                } catch let erro as NSError{
+                    print("Erro: \(erro.description)")
+                }
+                
+                var investimentoTotal : Double = 0
+                for compra in compras{
+                    var investimentoGuardado : Double = 0
+                    var unitarioGuardado : Double  = 0
+                    var bitGuardado : Double = 0
+                    var qtdGuardada : Double = 0
+                    
+                    if let qtd = compra.value(forKey: "qtd") as? Double{
+                        qtdGuardada = qtd
+                    }
+                    if let unitario = compra.value(forKey: "valorUnitario") as? Double{
+                        unitarioGuardado = unitario
+                    }
+                    if let bit = compra.value(forKey: "valorBitcoin") as? Double{
+                        bitGuardado = bit
+                    }
+                    investimentoGuardado = qtdGuardada*unitarioGuardado*bitGuardado
+                    investimentoTotal += investimentoGuardado
+                }
+                
+                coin.setValue(investimentoTotal, forKey: "investimento")
+                
+                do{
+                    try context.save()
+                } catch {
+                    print("Erroa o salvar as coins")
+                }
+            }
+        
+        
+    }
+    
     
     func buscaCoinPorCoin(){
         var requisicao = NSFetchRequest<NSFetchRequestResult>(entityName: "Coin")
@@ -89,6 +137,7 @@ class ListaCoinTableViewController: UITableViewController {
     }
     
     @objc func atualizaCoins(){
+        //recarregaInvestimentos()
         for coin in coins{
             let nome = coin.value(forKey: "nome") as? String
             
