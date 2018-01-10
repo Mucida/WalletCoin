@@ -105,7 +105,7 @@ class CompraViewController: UIViewController {
     }
     
     @IBAction func btnConfirmar(_ sender: Any) {
-        if validaCampos(){
+        if !validaCampos(){
             let alert = UIAlertController(title: "Campo Vazio", message: "Todos os campos devem ser preenchidos", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
@@ -126,10 +126,11 @@ class CompraViewController: UIViewController {
         var valorBitcoinC:Double=0
         let nome = coin.value(forKey: "nome") as! String
         
+        print(self.txtQtd.text)
         
-        if let qtd = self.txtQtd.text {
+        if let qtd = self.txtQtd.text{
             qtdC = Double(qtd)!
-            compra.setValue(Double(qtd), forKey: "qtd")
+            compra.setValue(qtdC, forKey: "qtd")
         }
         if nome == "Bitcoin"{
             valorUnitarioC = 1

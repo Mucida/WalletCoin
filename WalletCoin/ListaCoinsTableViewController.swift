@@ -107,12 +107,17 @@ class ListaCoinTableViewController: UITableViewController {
             
             quantidade = coin.value(forKey: "qtd") as! Double
             investimento = coin.value(forKey: "investimento") as! Double
-            viewInvestimentoTotal += investimento
+            
             
             let preco = buffer.meuBuffer[nome!]
             let totalLucro = (quantidade * preco!)
-            viewLucroTotal += totalLucro
+
             coin.setValue(totalLucro, forKey: "totalLucro")
+            
+            if nome != "Bitcoin"{
+                viewInvestimentoTotal += investimento
+                viewLucroTotal += totalLucro
+            }
             
             var porcentagem = 0.0
             if investimento != 0{
