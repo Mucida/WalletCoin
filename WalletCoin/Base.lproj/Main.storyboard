@@ -491,6 +491,13 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3N1-UZ-Ay6">
+                                            <rect key="frame" x="246" y="110" width="113" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="tEu-pP-ey7" firstAttribute="baseline" secondItem="vqt-Hu-Uls" secondAttribute="baseline" id="0O7-pE-YiD"/>
@@ -531,6 +538,7 @@
                                     <outlet property="lblPreco" destination="BaO-l6-SZk" id="5LP-Gf-Rka"/>
                                     <outlet property="lblQtd" destination="tEu-pP-ey7" id="FSf-ot-FFg"/>
                                     <outlet property="lblSigla" destination="PmG-1G-264" id="tmd-bj-fl1"/>
+                                    <outlet property="lblTotalDolar" destination="3N1-UZ-Ay6" id="kZ6-7J-wHj"/>
                                     <segue destination="FCG-1e-0uJ" kind="show" identifier="toCompraEdit" id="W8f-EO-FTS"/>
                                 </connections>
                             </tableViewCell>

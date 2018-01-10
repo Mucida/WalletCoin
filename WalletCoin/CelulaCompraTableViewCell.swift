@@ -27,5 +27,6 @@ class CelulaCompraTableViewCell: UITableViewCell {
     @IBOutlet weak var lblPreco: UILabel!
     @IBOutlet weak var lblBitcoin: UILabel!
     @IBOutlet weak var lblDataCompra: UILabel!
+    @IBOutlet weak var lblTotalDolar: UILabel!
     
 }

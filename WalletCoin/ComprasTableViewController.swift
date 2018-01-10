@@ -22,6 +22,9 @@ class ComprasTableViewController: UITableViewController {
     var coin : NSManagedObject!
     var fetchedResultsController : NSFetchedResultsController<Coin>!
     var totalInvestido : Double = 0;
+    var qtdC : Double = 0
+    var unitarioC : Double = 0
+    var bitcoinC : Double = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,15 +76,21 @@ class ComprasTableViewController: UITableViewController {
         let imagem: Data = coin.value(forKey: "logo") as! Data
         celula.imgLogo.image = UIImage(data: imagem)
         celula.lblSigla.text = coin.value(forKey: "sigla") as? String
-        if let qtd = compra.value(forKey: "qtd") {
+        if let qtd = compra.value(forKey: "qtd") as? Double{
+            qtdC = qtd
             celula.lblQtd.text = String(describing: qtd)
         }
-        if let preco = compra.value(forKey: "valorUnitario"){
+        if let preco = compra.value(forKey: "valorUnitario") as? Double{
+            unitarioC = preco
             celula.lblPreco.text =  formataNumero.formataQuantidadeBitcoin(qtd: preco as! NSNumber)
         }
-        if let bitcoin = compra.value(forKey: "valorBitcoin"){
+        if let bitcoin = compra.value(forKey: "valorBitcoin") as? Double{
+            bitcoinC = bitcoin
             celula.lblBitcoin.text = formataNumero.formataPreco(preco: bitcoin as! NSNumber)
         }
+        
+        let totalDolar = unitarioC * bitcoinC
+        celula.lblTotalDolar.text = formataNumero.formataPreco(preco: totalDolar as NSNumber)
         
         let formatacaoData = DateFormatter()
         formatacaoData.dateFormat =  "dd/MM/yyy hh:mm a"
