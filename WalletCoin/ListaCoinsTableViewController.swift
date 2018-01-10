@@ -95,7 +95,7 @@ class ListaCoinTableViewController: UITableViewController {
             _ = self.binanceService.binanceTradeBitcoin(buffer: buffer)
             if nome == "Bitcoin"{
                 self.bitcoinTradeService.bitcoinTrade(nomeMoeda: nome!, qtd: self.quantidade, investimento: self.investimento, buffer: buffer)
-            }else if nome == "Tron"{
+            }else if nome == "Tron" || nome == "Dent"{
                 if let urlMoeda = coin.value(forKey: "urlSymbol"){
                     self.binanceService.binanceTrade(nomeMoeda: nome!, moeda: String(describing: urlMoeda), cqtd: self.quantidade, investimento: self.investimento, buffer: buffer)
                 }
@@ -170,22 +170,26 @@ class ListaCoinTableViewController: UITableViewController {
         }
         
         
-        let invest = coin.value(forKey: "investimento")
-        celula.lblInvestimentoMedio.text = formataNumero.formataPreco(preco: invest as! NSNumber)
+        if let invest = coin.value(forKey: "investimento") {
+            celula.lblInvestimentoMedio.text = formataNumero.formataPreco(preco: invest as! NSNumber)
+        }
         
         let preco = buffer.meuBuffer[nome!]
         celula.lblValorAtual.text = self.formataNumero.formataPreco(preco: preco! as NSNumber)
         
-        let totalLucro = coin.value(forKey: "totalLucro")
-        celula.lblTotal.text = self.formataNumero.formataPreco(preco: totalLucro as! NSNumber)
+        if let totalLucro = coin.value(forKey: "totalLucro"){
+            celula.lblTotal.text = self.formataNumero.formataPreco(preco: totalLucro as! NSNumber)
+        }
         
         
-        let porcentagem = coin.value(forKey: "porcentagem") as! Double
-        celula.lblPorcentagem.text = self.formataNumero.formataPorcentagem(val: porcentagem as NSNumber)
-        if porcentagem >= 0{
-            celula.lblPorcentagem.textColor = UIColor(red: 0, green: 0.6, blue:0, alpha: 1.0)
-        } else{
-            celula.lblPorcentagem.textColor = UIColor.red
+        if let porcentagem = coin.value(forKey: "porcentagem") as? Double{
+            celula.lblPorcentagem.text = self.formataNumero.formataPorcentagem(val: porcentagem as NSNumber)
+        
+            if porcentagem >= 0{
+                celula.lblPorcentagem.textColor = UIColor(red: 0, green: 0.6, blue:0, alpha: 1.0)
+            } else{
+                celula.lblPorcentagem.textColor = UIColor.red
+            }
         }
         
         return celula

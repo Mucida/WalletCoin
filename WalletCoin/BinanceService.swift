@@ -44,7 +44,7 @@ class BinanceService{
                                 DispatchQueue.main.async(execute: {
                                     buffer.meuBuffer[nomeMoeda] = Double(precoAtualCoin)! * buffer.meuBuffer["BitcoinDolar"]!
                                     print("precoDoBitcoin: " + String(describing: buffer.meuBuffer["BitcoinDolar"]))
-                                    print("precoAtualCoin: " + precoAtualCoin)
+                                    print("precoAtualCoin: " + nomeMoeda + " --- " + precoAtualCoin)
                                 })
                             }
                     }
