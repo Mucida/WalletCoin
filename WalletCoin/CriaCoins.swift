@@ -189,19 +189,6 @@ class CriaCoins{
         status.setValue(imageData25, forKey: "logo")
         status.setValue("sntusd", forKey: "urlSymbol")
         
-
-        
-        do{
-            try context.save()
-        } catch {
-            print("Erroa o salvar as coins")
-        }
-        let userDefaults = UserDefaults.standard
-        userDefaults.set(false, forKey: "firstRun")
-        
-    }
-    
-    func addCoin(context: NSManagedObjectContext){
         let tron = NSEntityDescription.insertNewObject(forEntityName: "Coin", into: context)
         tron.setValue("Tron", forKey: "nome")
         tron.setValue("TRX", forKey: "sigla")
@@ -215,6 +202,32 @@ class CriaCoins{
         let imageData27 = UIImagePNGRepresentation(#imageLiteral(resourceName: "dent"))! as NSData
         dent.setValue(imageData27, forKey: "logo")
         dent.setValue("DNTBTC", forKey: "urlSymbol")
+        
+        let zerox = NSEntityDescription.insertNewObject(forEntityName: "Coin", into: context)
+        zerox.setValue("ZeroX", forKey: "nome")
+        zerox.setValue("ZRX", forKey: "sigla")
+        let imageData28 = UIImagePNGRepresentation(#imageLiteral(resourceName: "zerox"))! as NSData
+        zerox.setValue(imageData28, forKey: "logo")
+        zerox.setValue("zrxusd", forKey: "urlSymbol")
+        
+        do{
+            try context.save()
+        } catch {
+            print("Erroa o salvar as coins")
+        }
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(false, forKey: "firstRun")
+        
+    }
+    
+    func addCoin(context: NSManagedObjectContext){
+        
+        let zerox = NSEntityDescription.insertNewObject(forEntityName: "Coin", into: context)
+        zerox.setValue("ZeroX", forKey: "nome")
+        zerox.setValue("ZRX", forKey: "sigla")
+        let imageData28 = UIImagePNGRepresentation(#imageLiteral(resourceName: "zerox"))! as NSData
+        zerox.setValue(imageData28, forKey: "logo")
+        zerox.setValue("zrxusd", forKey: "urlSymbol")
         
         do{
             try context.save()
