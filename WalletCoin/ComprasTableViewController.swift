@@ -92,6 +92,14 @@ class ComprasTableViewController: UITableViewController {
         let totalDolar = unitarioC * bitcoinC
         celula.lblTotalDolar.text = formataNumero.formataPreco(preco: totalDolar as NSNumber)
         
+        if(qtdC >= 0 && totalDolar > 0){
+            celula.contentView.backgroundColor = UIColor(red: 0, green: 1, blue:0, alpha: 0.1)
+        }else if(qtdC >= 0 && totalDolar == 0){
+            celula.contentView.backgroundColor = UIColor(red: 0, green: 0, blue:1, alpha: 0.1)
+        }else if(qtdC < 0){
+            celula.contentView.backgroundColor = UIColor(red: 1, green: 0, blue:0, alpha: 0.1)
+        }
+        
         let formatacaoData = DateFormatter()
         formatacaoData.dateFormat =  "dd/MM/yyy hh:mm a"
         formatacaoData.amSymbol = "AM"

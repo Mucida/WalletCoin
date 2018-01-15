@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WalletCoin/ComprasTableViewController.swift"
-            timestampString = "537307693.215381"
+            timestampString = "537392556.061806"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "adicionar(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WalletCoin/ComprasTableViewController.swift"
-            timestampString = "537307693.215889"
+            timestampString = "537392556.062326"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WalletCoin/ComprasTableViewController.swift"
-            timestampString = "537307693.216212"
+            timestampString = "537392556.062626"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "73"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WalletCoin/ComprasTableViewController.swift"
-            timestampString = "537307693.216599"
+            timestampString = "537392556.062916"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "48"
@@ -107,13 +107,13 @@
             condition = "if nome == &quot;OmiseGo&quot;"
             continueAfterRunningActions = "No"
             filePath = "WalletCoin/ListaCoinsTableViewController.swift"
-            timestampString = "537307693.216967"
+            timestampString = "537392556.063253"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "242"
             endingLineNumber = "242"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -379,13 +379,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WalletCoin/ListaCoinsTableViewController.swift"
-            timestampString = "537307693.218093"
+            timestampString = "537392556.06383"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "241"
             endingLineNumber = "241"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -411,13 +411,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WalletCoin/ListaCoinsTableViewController.swift"
-            timestampString = "537307693.2185349"
+            timestampString = "537392556.0641609"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "74"
             endingLineNumber = "74"
-            landmarkName = "recarregaInvestimentos()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -427,13 +427,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WalletCoin/ListaCoinsTableViewController.swift"
-            timestampString = "537307693.219087"
+            timestampString = "537392556.06446"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "72"
             endingLineNumber = "72"
-            landmarkName = "recarregaInvestimentos()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
