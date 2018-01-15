@@ -81,8 +81,8 @@ class FormataNumero{
     
     func formataQuantidadeCoinEditado(qtd: NSNumber) -> String{
         nf.decimalSeparator = "."
-        nf.minimumFractionDigits = 2
-        nf.maximumFractionDigits = 2
+        nf.minimumFractionDigits = 8
+        nf.maximumFractionDigits = 8
         if let qtdFinal = nf.string(from: qtd) {
             return qtdFinal
         }

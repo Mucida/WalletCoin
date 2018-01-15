@@ -45,7 +45,7 @@ class ListaCoinTableViewController: UITableViewController {
         //soh cria as coins uma vez
         if def.bool(forKey: "firstRun") { cc.criaCoins(context: context) }
         //cc.criaCoins(context: context)
-        //         cc.addCoin(context: context)
+        //cc.addCoin(context: context)
         
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(ListaCoinTableViewController.buscaCoinPorCoinPorcent))
